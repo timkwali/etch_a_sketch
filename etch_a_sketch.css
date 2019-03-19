@@ -1,0 +1,18 @@
+#container {
+  position: absolute;
+  ;
+  width: 400px;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px;
+  grid-template-rows: 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px;
+  grid-gap: 0px 0px;
+  justify-content: center;
+  align-content: center;
+}
+
+.box {
+ 
+}
+
+ 
