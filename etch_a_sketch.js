@@ -1,33 +1,56 @@
-  function createGrid(newGrid) {
-      for(i = 0; i < newGrid; i++) { // creates 16 columns
-        for(j = 0; j < newGrid; j++) { // creates 16 rows  
-          div = document.createElement("div");
-          div.classList.add("box");
-          div.style.width = "auto";
-          div.style.height = "auto";
-          div.style.border = "0.5px solid blue";
-          div.style.margin = "0px";
-          container.appendChild(div);
-        } // end for loop 
-      } // end for loop
+  function createGrid(num) {
+    let boxSize = (400/num);
+    let grid = num * num;
+      for(i = 0; i < grid; i++) {
+        div = document.createElement("div");
+        div.classList.add("box");
+        div.style.width = `${boxSize}px`;
+        div.style.height = `${boxSize}px`;
+        container.appendChild(div);
+      } // end for loop 
+    changeRandomColor();
   } //creates grid of div elements
   
-  function hover() {
-    box.style.backgroundColor = "grey";
-  } // changes the box color
+  function removeGrid() {
+	  let boxes = document.querySelectorAll('.box');
+		boxes.forEach((box) => {
+			box.parentNode.removeChild(box);
+	  });
+  } // deletes old Grid
 
-  function resetGrid() {
-    container.remove(box);
-    newGrid = prompt("Enter a value for the number of rows and columns of the new grid");
-    createGrid(newGrid);
-  } // creates new Grid
+  function changeColor() {
+    let box = document.querySelectorAll(".box");
+    box.forEach((box) => {
+      box.addEventListener("mouseover", (e) => {
+        e.target.style.backgroundColor = "grey";
+      });
+    });
+  } // changes the color of the boxes
 
-  container = document.getElementById("container");
-  createGrid(16);
+  function changeRandomColor() {
+    let letters = "0123456789ABCDEF";
+    let color = "#";
+    for(i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    } //end for loop
+    let box = document.querySelectorAll(".box");
+    
+    box.forEach((box) => {
+      box.addEventListener("mouseover", (e) => {
+        e.target.style.backgroundColor = color;
+      });
+    });
+  } // gives boxes random colors
+
+  const container = document.getElementById("container");
   let box = document.querySelectorAll(".box");
-  box.forEach( (box) => {
-    box.addEventListener("mouseover", hover);
-  });
+  let reset = document.getElementById("reset");
+  
+  reset.addEventListener("click", (e) =>{
+    removeGrid();
+    newGrid = prompt("Enter a value for the number of rows and columns of the new grid");
+    newGrid = parseInt(newGrid);
+    createGrid(newGrid);
+  }); // removes old grid and creates new one
 
-  button = document.getElementById("reset");
-  button.addEventListener("click", resetGrid);
+  

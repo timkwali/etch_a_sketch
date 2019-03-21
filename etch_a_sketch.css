@@ -1,18 +1,25 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+
 #container {
-  position: absolute;
-  ;
-  width: 400px;
   border: 1px solid red;
-  display: grid;
-  grid-template-columns: 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px;
-  grid-template-rows: 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px 25px;
-  grid-gap: 0px 0px;
+  margin: 25px auto;
+  width: 405px;
+  height: 405px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   align-content: center;
 }
 
 .box {
- 
+  border: 0.5px solid black;
 }
 
  
